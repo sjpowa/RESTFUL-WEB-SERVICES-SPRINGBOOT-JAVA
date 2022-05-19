@@ -1,0 +1,15 @@
+# Internationalization
+
+### Configuration
+- LocaleResolver -> We add it in the main
+	- Default Locale - Locale.US
+- ResourseBundleMessageSource -> so we will customize ResourceBundleMessageSource
+	so we will have a list of properties which they will be internationalize an then we store them in ResourceBundleMessageSource.
+  ResourceBundleMessageSource is something that allows us to handle properties
+
+- So if u are not going to specify the Locale, the default will be Locale.US
+
+#### Usage
+- Autowire MessageSource
+- @RequestHeader(value= "Accept-Language", require = false) Locale locale
+- messageSource.getMessage("helloWorld.message", null, locale)
