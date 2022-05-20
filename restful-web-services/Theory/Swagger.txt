@@ -1,0 +1,17 @@
+>>> SWAGGER <<<
+
+# Swagger is one of the most popular Documentation Format for REST Service
+
+# =======================================================================================
+# PROBLEM WITH SWAGGER AFTER DONE THE CONFIGURATION AND ENABLING SWAGGER 2
+
+# Spring is using mvcmatchers by default which conflicts with swagger
+# because it uses the antmatchers so we can solve this by [application.properties]:
+spring.mvc.pathmatch.matching-strategy = ANT_PATH_MATCHER
+# =======================================================================================
+
+# We use ApiModel and ApiModelProperty to add a description/note to our Swagger Documentation
+
+# If u go on the ApiModelProperty Class and redirect the Project Explorer where this class is located
+	u can see that there are a lot of annotation, so when needed study and use what u need
+# =======================================================================================

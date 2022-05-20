@@ -17,6 +17,8 @@ public class RestfulWebServicesApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RestfulWebServicesApplication.class, args);
 	}
+	
+	// ===================================================================
 
 	// This is the First Way to configure Internationalization
 	// passing the parameter in the method in Controller Class
@@ -45,11 +47,16 @@ public class RestfulWebServicesApplication {
 	// and customize them base on the input accepted header [Postman -> Header -> Accept-Language -> it]
 	// How do we do that?
 	// We have to add a new Bean
-	@Bean
-	public ResourceBundleMessageSource messageSource() {
-			ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-			messageSource.setBasename("messages"); // messages because our properties are called messages.properties
-			return messageSource;
-	}
+//	@Bean
+//	public ResourceBundleMessageSource messageSource() {
+//			ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+//			messageSource.setBasename("messages"); // messages because our properties are called messages.properties
+//			return messageSource;
+//	}
+	// instead of this method up here, we can do this configuration in an easier way in application.properties
+	// with: spring.messages.basename=messages
+	
+	// ===================================================================
+
 	
 }

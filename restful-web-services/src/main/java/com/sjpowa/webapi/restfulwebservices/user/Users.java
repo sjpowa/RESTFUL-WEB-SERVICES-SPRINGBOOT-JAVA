@@ -10,8 +10,12 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 // This is our First Bean to Store User Details
 @Entity
+@ApiModel(description = "All the details about the user.") // adding customized documentation on our Swagger Doc.
 public class Users {
 
 	@Id
@@ -22,10 +26,12 @@ public class Users {
 	// with less of 2 Char in the name
 	// in the Details
 	@Size(min = 2, message = "The name should have at least 2 characters!")
+	@ApiModelProperty(notes="The name should have at least 2 characters!") // adding customized documentation on our Swagger Doc.
 	private String name;
 	
 	// @Past is a CONSTRAINT that gives u the rule to never go forward ur ACTUAL DATE
 	@Past
+	@ApiModelProperty(notes="The Birthday cannot be set after the Current-Date!")
 	private Date birthDate;
 	
 	@OneToMany(mappedBy = "users")

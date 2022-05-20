@@ -1,0 +1,52 @@
+#### IMPLEMENTING SUPPORT FOR XML
+
+===============================================================
+RECOMMENDATION: Disable XML Support OR Remove the dependency from the pom.xml file
+WHY?
+PROBLEM: Browsers give preference to XML over JSON (They send Accept header with application/xml). 
+
+===============================================================
+
+## As we know Spring Boot will manage Java Classes and in Response we will have a JSON file
+## All this transformation is done by the jackson dependency.
+
+## Another thing we can do is to give to our Client the opportunity to have in input and output,
+ not only the JSON format, but also the .xml format
+ 
+ ## To do that we have just to add in our pom.xml file a dependency
+ 
+ ## Search on Google for: jackson xml converter maven dependency
+ 	## https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml
+ 
+ ## After u have added that dependency, STOP/Don't run the application and Update the Maven Project!
+ 
+ ## Then u are ready and can see that when u run the app,
+ 	in ur browser the response will be in xml format
+ 
+ ## When u use Postman, u can go in Header -> Accept -> application/xml
+ 	and u will see the response in XML format
+ 
+ ## To see the response back in JSON [POSTMAN]
+ 	Header -> Content-Type -> application/json
+ 	
+### ===============================================================================================
+## HOW TO DO A POST WITH XML FORMAT
+
+# Go in Postman and do the GET Request to have the XML format.
+
+# EXAMPLE: with this project we have some request to do on localhost:8080/users
+	and down here I paste just one of the user we need to have the format and then make a POST Request
+	
+	<item>
+		<id>1</id> [DELETE THE ID FOR THE POST REQUEST]
+		<name>Adam</name>
+		<birthDate>2022-05-20T12:11:15.084+00:00</birthDate>
+	</item>
+	
+# Go in the POST Request in Postman -> Body -> raw -> XML (application/xml)
+	<item>
+		<name>Adam</name>
+		<birthDate>2022-05-20T12:11:15.084+00:00</birthDate>
+	</item>
+
+# DONE!

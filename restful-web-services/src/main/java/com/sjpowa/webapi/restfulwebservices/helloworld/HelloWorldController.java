@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloWorldController {
 	
-	// so we have created a bean and now we want to take the value from messageSource
+	// We have to update our hello-world-internationalized message-output
+	// to give the message from src/main/resources -> messages.properties
+	// To do it we need MessageSource, @Autowired because we have to use its methods
 	@Autowired
 	private MessageSource messageSource;
 	
@@ -57,6 +59,7 @@ public class HelloWorldController {
 	// Here we are creating a method to GET a Good Morning
 	// based on the language selected.
 	// Locale is something to be given as input to this particular service.
+	// In Postman -> Header -> Add -> Accept-Language -> set the [value]
 	// How do we get Locale as an input? -> We need to add it as a parameter of this method Locale locale.
 	// But how the consumer can pass the locale? -> The consumer can do that through header attributes.
 	// The Request header has to be defined by the user but we set required = false because we want the US as default so if the user
@@ -66,14 +69,15 @@ public class HelloWorldController {
 //		return messageSource.getMessage("good.morning.message", null, locale);
 //	}
 	
-	// There is another way, cleaner to have the same result, but in a better way
-	// because I don't need to pass Locale as Parameter, so I don't need to set the Accept-Language that
-	// as Default will be the US.
+	
+	// LocaleContextHolder avoids us
+	// to write in all the internationalized methods the @RequestHeader(name="Accept-Language"
 	@GetMapping(path = "/hello-world-internationalized")
 	public String helloWorldInternationalized() {
 		return messageSource.getMessage("good.morning.message", null, // in null Object[] we can use this parameter to customize the message
-				LocaleContextHolder.getLocale());
+				LocaleContextHolder.getLocale()); // pick the accepted locale from the header
 	}
+	
 	
 	// ============================================================================================
 

@@ -73,6 +73,30 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- With this dependency we are able to use xml format to do all our Rest operation, GET, POST, etc etc -->
+		<!-- Once added, probably in ur browser u will see now only xml format and get requests -->
+		<!-- To avoid that, you should simple comment or delete the dependency again -->
+		<!-- In other case, use Postman and in the Header -> Accept -> application/xml ||| -->
+		<!--
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+		-->
+		<!-- Actually I have disable the xml format because Browsers give preference to XML over JSON -->
+		
+		<!-- Down here with this dependency we are adding Swagger -->
+		<dependency>
+		  <groupId>io.springfox</groupId>
+		  <artifactId>springfox-boot-starter</artifactId>
+		  <version>3.0.0</version>
+		</dependency>
+		<!-- We don't need, anymore, to add the swagger-ui but we just need this one dependency up here to be good -->
+		<!-- // URL
+			 // http://localhost:8080/v2/api-docs
+			 // localhost:8080/swagger-ui/
+		-->
+
 	</dependencies>
 
 	<build>
