@@ -20,6 +20,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2 // Enable Swagger
 public class SwaggerConfig {
 	
+	// URL
+	// http://localhost:8080/v2/api-docs
+	// localhost:8080/swagger-ui/
+
+	
 	// From ApiInfo we copy and paste DEFAULT_CONTACT and DEFAULT informations we want to customize
 	
 	public static final Contact DEFAULT_CONTACT
@@ -42,10 +47,6 @@ public class SwaggerConfig {
 //	new HashSet<String>(Arrays.asList("application/json", "application/xml"));
 	// Actually we have commented the xml format dependency, so we add as produces only JSON format
 	
-	// URL
-	// http://localhost:8080/v2/api-docs
-	// localhost:8080/swagger-ui/
-
 	// REMEMBER: Here we declare the method api() a BEAN because it is a Docket type,
 	// so this method returning back a Docket instance, Spring Boot to manage the instance
 	// has to know that this down here is a BEAN!.

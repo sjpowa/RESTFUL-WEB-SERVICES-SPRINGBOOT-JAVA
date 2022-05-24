@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Past;
@@ -18,8 +19,9 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "All the details about the user.") // adding customized documentation on our Swagger Doc.
 public class Users {
 
+	// When one uses IDENTITY strategy, then, database can automatically assign a next value.
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	// message = ... -> we see our msg after a POST of an User
@@ -34,6 +36,13 @@ public class Users {
 	@ApiModelProperty(notes="The Birthday cannot be set after the Current-Date!")
 	private Date birthDate;
 	
+	// an User can create a List of Post //
+	// Which is the field that owns the relationship?
+	// mappedBy = " name of the field in Post of User"
+	// in Post Class we have called our user field as Users users
+	// that's why mappedBy = "users"
+	// We just generate getters and setters of this List<Post>, no CTOR or toString
+	// NO CTOR because we don't have to generate a Post from this class!!!
 	@OneToMany(mappedBy = "users")
 	private List<Post> posts;
 	
@@ -45,7 +54,7 @@ public class Users {
 	// we don't have the error
 	// a CTOR with 3 pamareter (with the id in it too),
 	// can't satisfy the request!!!
-	// remember, the machine is not stupid, but we are!
+	// Remember, the machine is not stupid, but we are!
 	protected Users() {
 		
 	}

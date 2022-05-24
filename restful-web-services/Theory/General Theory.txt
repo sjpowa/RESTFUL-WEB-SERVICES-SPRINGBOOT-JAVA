@@ -1,0 +1,22 @@
+>>> What is a Servlet? <<<
+What Is a Servlet?
+A servlet is a Java programming language class that is used to extend the capabilities of
+servers that host applications accessed by means of a request-response programming model.
+ Although servlets can respond to any type of request, they are commonly used to extend
+ the applications hosted by web servers.
+ For such applications, Java Servlet technology defines HTTP-specific servlet classes.
+=========================================================================================
+>>> What is the DispatcherServlet? <<<
+The DispatcherServlet is the front controller in Spring web applications.
+It's used to create web applications and REST services in Spring MVC.
+In a traditional Spring web application, this servlet is defined in the web.xml file.
+
+When we go in a browser and call the url with the URI of our service
+who manage all the stuff is a controller, called DispatcherServlet!
+=========================================================================================
+>>> Who configure the DispatcherServlet? <<<
+It is configured by Spring Boot AutoConfiguration
+=========================================================================================
+>>> Who converts to JSON all the stuff we call on the URL? <<<
+The jackson jar in Maven Dependency
+=========================================================================================

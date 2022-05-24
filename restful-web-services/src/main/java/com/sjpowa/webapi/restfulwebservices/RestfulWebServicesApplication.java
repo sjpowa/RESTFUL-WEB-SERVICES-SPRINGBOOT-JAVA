@@ -5,13 +5,19 @@ import java.util.Locale;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
-@SpringBootApplication
+// To discard the security auto-configuration and add our own configuration,
+// we need to exclude the SecurityAutoConfiguration class.
+// There are two ways:
+// 1) is with (exclude = { SecurityAutoConfiguration.class })
+// 2) in application.properties we can add spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration
+@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 public class RestfulWebServicesApplication {
 
 	public static void main(String[] args) {
@@ -57,6 +63,5 @@ public class RestfulWebServicesApplication {
 	// with: spring.messages.basename=messages
 	
 	// ===================================================================
-
 	
 }

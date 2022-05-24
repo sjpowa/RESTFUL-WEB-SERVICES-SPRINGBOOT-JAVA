@@ -26,9 +26,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 // IN FACT SOMEONE CAN CALL IT UserController
 @RestController
 public class UserJPAResource {
+	
+	// With @Autowired Annotation we can use/inject the methods from these classes/interfaces
 
-	// So we take all the data from the UserDaoService
-	// and autowire it here
+	// So we take all the data from the UserDaoService with its methods
 	@Autowired
 	private UserDaoService service;
 	
@@ -114,7 +115,7 @@ public class UserJPAResource {
 			//CREATED
 			// users/4
 			
-			// How do I create the location of the resorce
+			// How do I create the location of the resource
 			// which was created
 			// How do I create the URI
 			URI location = ServletUriComponentsBuilder
@@ -138,31 +139,36 @@ public class UserJPAResource {
 	
 	@GetMapping("/jpa/users/{id}/posts")
 	public List<Post> retrieveAllUsers(@PathVariable int id) {
-		Optional<Users> userOptional = userRepository.findById(id);
+		Optional<Users> userOptional = userRepository.findById(id); // // I take the detail of the user
 		
 		if(!userOptional.isPresent()) {
 			throw new UserNotFoundException("id-" + id);
 		}
 		
-		return userOptional.get().getPosts();
+		return userOptional.get().getPosts(); // get the all the Posts of an User
 	}
 	
 	@PostMapping("/jpa/users/{id}/posts")
 	public ResponseEntity<Object> createPost(@PathVariable int id, @RequestBody Post post) {
-			Optional<Users> userOptional = userRepository.findById(id);
+			Optional<Users> userOptional = userRepository.findById(id); // I want to know which user has to create a post
 			
 			if(!userOptional.isPresent()) {
 				throw new UserNotFoundException("id-" + id);
 			}
 			
+			// I have the user variable right now //
+			// So we got the user //
 			Users users = userOptional.get();
 			
-			// Now I have to map the User to the Post
+			// Now I have to map the User to the Post //
+			// We have set the user into the post //
 			post.setUsers(users);
 			
-			// save the post
+			// save method from PostRepository - save the post created in the @RequestBody //
+			// We are saving the post to the db //
 			postRepository.save(post);
 			
+			// Returning the location of where is the created post!
 			URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest() // /user
 				.path("/{id}")	// /user/{id} [append to the previous ' /user '

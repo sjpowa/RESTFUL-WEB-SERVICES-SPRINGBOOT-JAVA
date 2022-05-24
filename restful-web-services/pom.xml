@@ -96,6 +96,18 @@
 			 // http://localhost:8080/v2/api-docs
 			 // localhost:8080/swagger-ui/
 		-->
+		
+		<!-- Dependency to add an Authentication -->
+		<!-- Once you run the application again,
+			you will see in the console:
+				Using generated security password: passwordAutomaticallyGenerated -->
+		<!-- Go in application.properties and set your
+			spring.security.user.name
+			spring.security.user.password -->
+		<dependency>
+      		<groupId>org.springframework.boot</groupId>
+      		<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 
 	</dependencies>
 

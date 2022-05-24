@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 // Controller
+// We are just saying to Spring that this i a controller
 @RestController
 public class HelloWorldController {
 	
@@ -24,6 +25,7 @@ public class HelloWorldController {
 	private MessageSource messageSource;
 	
 	// Longest way to set a method and a path
+	// /hello-world => is called URI
 	@RequestMapping(method = RequestMethod.GET, path = "/hello-world")
 	public String helloWorld() {
 		return "Hello World";
@@ -36,6 +38,7 @@ public class HelloWorldController {
 	}
 	
 	// Return a Bean
+	// Why a Bean? Because a new instance managed by Spring Boot is called Bean
 	@GetMapping(path = "/hello-world-bean")
 	public HelloWorldBean HelloWorldBean() {
 		return new HelloWorldBean("this bean msg will be automatically converted into a JSON file");

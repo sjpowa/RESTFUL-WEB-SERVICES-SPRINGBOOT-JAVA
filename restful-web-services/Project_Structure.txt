@@ -1,0 +1,17 @@
+# RESTful Web Services
+
+# RESTful = representational state transfer
+
+Social Media Applciation
+
+User -> Posts
+(One user can do more than one post)
+
+- Retrieve all Users	| - GET /users
+- Create an User		| - POST /users
+- Retrieve one User		| - GET /users/{id} -> /users/1
+- Delete an User		| - DELETE /users/{id}
+
+- Retrieve all the posts for an User	| - GET /users/{id}/posts
+- Create a post for an User				| - POST /users/{id}/posts
+- Retrieve details of a post			| - GET /users/{id}/posts/{post_id}				

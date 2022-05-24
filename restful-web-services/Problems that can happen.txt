@@ -1,0 +1,8 @@
+================================================================================
+>>> URI request not working <<<
+If the URL with the URI of the Request we want to see is not working, do this:
+	Use the same package (or Sub-Package) of the Main[compiler class]
+================================================================================
+>>> JSON Format in the Browser <<<
+To see in the browser the data in JSON Format you have to add a plug-in extension in your browser
+================================================================================
